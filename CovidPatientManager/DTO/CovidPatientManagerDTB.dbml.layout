@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="CovidPatientManagerDTB">
+  <DataContextMoniker Name="/CovidPatientManagerDTBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="694cf4e7-1bea-4806-812d-0b2d3ed35cbd" absoluteBounds="0.75, 1.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/CovidPatientManagerDTBDataContext/DiaDiemDieuTri" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e44373b5-eaca-46ce-90f9-c3225b0f6925" absoluteBounds="0.765, 1.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b94f220c-e793-4e44-8536-a468a667e66c" absoluteBounds="3.5, 1, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/CovidPatientManagerDTBDataContext/BenhNhan" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8cfdea4f-784b-4d1d-9704-71b9c721a62f" absoluteBounds="3.515, 1.46, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="71a648df-400e-4a0a-9415-ac77d899ac79" absoluteBounds="0.75, 4.75, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/CovidPatientManagerDTBDataContext/TaiKhoan" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9d07f415-b779-4187-8fe0-73b8ded8393a" absoluteBounds="0.765, 5.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 2.16429768880208); (3.5 : 2.16429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CovidPatientManagerDTBDataContext/DiaDiemDieuTri/DiaDiemDieuTri_BenhNhan" />
+      <nodes>
+        <classShapeMoniker Id="694cf4e7-1bea-4806-812d-0b2d3ed35cbd" />
+        <classShapeMoniker Id="b94f220c-e793-4e44-8536-a468a667e66c" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

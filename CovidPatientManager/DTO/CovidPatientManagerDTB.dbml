@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="CovidPatientManagerDTB" Class="CovidPatientManagerDTBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-PE3G7SG;Initial Catalog=CovidPatientManagerDTB;Integrated Security=True" SettingsObjectName="CovidPatientManager.Properties.Settings" SettingsPropertyName="CovidPatientManagerDTBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.DiaDiemDieuTri" Member="DiaDiemDieuTris">
+    <Type Name="DiaDiemDieuTri">
+      <Column Name="IDDiaDiemDieuTri" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenDiemDieuTri" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="SucChua" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="HienTai" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Association Name="DiaDiemDieuTri_BenhNhan" Member="BenhNhans" ThisKey="IDDiaDiemDieuTri" OtherKey="IDDiaDiemDieuTri" Type="BenhNhan" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BenhNhan" Member="BenhNhans">
+    <Type Name="BenhNhan">
+      <Column Name="ID" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="CMND" Type="System.String" DbType="NChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="NamSinh" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="TrangThai" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="IDDiaDiemDieuTri" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="LienQuan" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="LichSu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="DiaDiemDieuTri_BenhNhan" Member="DiaDiemDieuTri" ThisKey="IDDiaDiemDieuTri" OtherKey="IDDiaDiemDieuTri" Type="DiaDiemDieuTri" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TaiKhoan" Member="TaiKhoans">
+    <Type Name="TaiKhoan">
+      <Column Name="TaiKhoan" Member="TaiKhoan1" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="MatKhau" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Quyen" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
