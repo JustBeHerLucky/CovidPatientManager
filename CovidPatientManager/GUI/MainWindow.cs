@@ -16,14 +16,34 @@ namespace CovidPatientManager.GUI
         public MainWindow()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        void UpForm(Form F)
+        {
+            F.MdiParent = this;
+            F.FormBorderStyle = FormBorderStyle.None;
+            F.WindowState = FormWindowState.Maximized;
+            F.Show();
         }
 
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
         {
-            BenhNhan BNF = new BenhNhan();
-            BNF.MdiParent = this;
-            BNF.Show();
+            PatientForm BNF = new PatientForm("NV01");
+            UpForm(BNF);
             
+        }
+
+        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            CSDieuTri CS = new CSDieuTri("NV01");
+            UpForm(CS);
+        }
+
+        private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            TaiKhoanForm TKF = new TaiKhoanForm("NV01");
+            UpForm(TKF);
         }
     }
 }

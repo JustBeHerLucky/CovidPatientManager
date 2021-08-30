@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="CovidPatientManagerDTB" Class="CovidPatientManagerDTBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-PE3G7SG;Initial Catalog=CovidPatientManagerDTB;Integrated Security=True" SettingsObjectName="CovidPatientManager.Properties.Settings" SettingsPropertyName="CovidPatientManagerDTBConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.DiaDiemDieuTri" Member="DiaDiemDieuTris">
-    <Type Name="DiaDiemDieuTri">
-      <Column Name="IDDiaDiemDieuTri" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TenDiemDieuTri" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="SucChua" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="HienTai" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Association Name="DiaDiemDieuTri_BenhNhan" Member="BenhNhans" ThisKey="IDDiaDiemDieuTri" OtherKey="IDDiaDiemDieuTri" Type="BenhNhan" />
+  <Table Name="dbo.LichSuBenhNhan" Member="LichSuBenhNhans">
+    <Type Name="LichSuBenhNhan">
+      <Column Name="NUM" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="NgayThang" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LichSu" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="TaiKhoan" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="BenhNhan_LichSuBenhNhan" Member="BenhNhan" ThisKey="ID" OtherKey="ID" Type="BenhNhan" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="TaiKhoan_LichSuBenhNhan" Member="TaiKhoan1" ThisKey="TaiKhoan" OtherKey="TaiKhoan1" Type="TaiKhoan" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.BenhNhan" Member="BenhNhans">
@@ -17,17 +19,47 @@
       <Column Name="NamSinh" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="DiaChi" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="TrangThai" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="IDDiaDiemDieuTri" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="IDDiaDiemDieuTri" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="LienQuan" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
-      <Column Name="LichSu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Association Name="DiaDiemDieuTri_BenhNhan" Member="DiaDiemDieuTri" ThisKey="IDDiaDiemDieuTri" OtherKey="IDDiaDiemDieuTri" Type="DiaDiemDieuTri" IsForeignKey="true" />
+      <Association Name="BenhNhan_LichSuBenhNhan" Member="LichSuBenhNhans" ThisKey="ID" OtherKey="ID" Type="LichSuBenhNhan" />
+      <Association Name="DiaDiemDieuTri_BenhNhan" Member="DiaDiemDieuTri" ThisKey="IDDiaDiemDieuTri" OtherKey="IDDiaDiemDieuTri" Type="DiaDiemDieuTri" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VietNam" Member="VietNams">
+    <Type Name="VietNam">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenThanhPho" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TenQuan" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TenPhuong" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LichSuTaiKhoan" Member="LichSuTaiKhoans">
+    <Type Name="LichSuTaiKhoan">
+      <Column Name="NUM" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TaiKhoan" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="NgayThang" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LichSu" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="IDDiaDiemDieuTri" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="TaiKhoan_LichSuTaiKhoan" Member="TaiKhoan1" ThisKey="TaiKhoan" OtherKey="TaiKhoan1" Type="TaiKhoan" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DiaDiemDieuTri" Member="DiaDiemDieuTris">
+    <Type Name="DiaDiemDieuTri">
+      <Column Name="IDDiaDiemDieuTri" Type="System.String" DbType="NVarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenDiemDieuTri" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="SucChua" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="HienTai" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Association Name="DiaDiemDieuTri_BenhNhan" Member="BenhNhans" ThisKey="IDDiaDiemDieuTri" OtherKey="IDDiaDiemDieuTri" Type="BenhNhan" />
     </Type>
   </Table>
   <Table Name="dbo.TaiKhoan" Member="TaiKhoans">
     <Type Name="TaiKhoan">
-      <Column Name="TaiKhoan" Member="TaiKhoan1" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
-      <Column Name="MatKhau" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
-      <Column Name="Quyen" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TaiKhoan" Member="TaiKhoan1" Type="System.String" DbType="NChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MatKhau" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Quyen" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Active" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="TaiKhoan_LichSuBenhNhan" Member="LichSuBenhNhans" ThisKey="TaiKhoan1" OtherKey="TaiKhoan" Type="LichSuBenhNhan" />
+      <Association Name="TaiKhoan_LichSuTaiKhoan" Member="LichSuTaiKhoans" ThisKey="TaiKhoan1" OtherKey="TaiKhoan" Type="LichSuTaiKhoan" />
     </Type>
   </Table>
 </Database>
